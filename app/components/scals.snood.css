@@ -1,0 +1,113 @@
+/* Level 0. Scales */
+
+*, .medium, .medium * {
+	--fs-inc: 1;
+}
+
+.xx-large, .xx-large * {
+	--fs-inc: 1.75;
+}
+
+.x-large, .x-large * {
+	--fs-inc: 1.5;
+}
+
+.large, .large * {
+	--fs-inc: 1.25;
+}
+
+.xx-medium, .xx-medium * {
+	--fs-inc: 1.15;
+}
+
+.x-medium, .x-medium * {
+	--fs-inc: 1.1;
+}
+
+.z-medium, .z-medium * {
+	--fs-inc: 0.95;
+}
+
+.zz-medium, .zz-medium * {
+	--fs-inc: 0.9;
+}
+
+.small, .small * {
+	--fs-inc: 0.85;
+}
+
+.x-small, .x-small * {
+	--fs-inc: 0.8;
+}
+
+.xx-small, .xx-small * {
+	--fs-inc: 0.75;
+}
+
+body h1, body h2 , body h3, body h4, body h5, body h6 {
+    font-weight: 900;
+    line-height: 1.25;
+}
+
+body *, .medium * {
+    --fs: calc(var(--fs-inc) * calc(1rem + (1.25 - 1) * ((100vw - 20rem) / (80 - 20))));
+    font-size: var(--fs);
+    line-height: 1.6;
+}
+
+h1, .subtitle-h1 {
+    --fs: calc(var(--fs-inc) * calc(1.7rem + (2.4 - 1.7) * ((100vw - 20rem) / (80 - 20))));
+	font-size: var(--fs);
+}
+
+h2, .subtitle-h2 {
+    --fs: calc(var(--fs-inc) * calc(1.5rem + (2.15 - 1.5) * ((100vw - 20rem) / (80 - 20))));
+    font-size: var(--fs);
+}
+
+h3, .subtitle-h3 {
+    --fs: calc(var(--fs-inc) * calc(1.4rem + (1.9 - 1.4) * ((100vw - 20rem) / (80 - 20))));
+    font-size: var(--fs);
+}
+
+h4, .subtitle-h4 {
+    --fs: calc(var(--fs-inc) * calc(1.3rem + (1.7 - 1.3) * ((100vw - 20rem) / (80 - 20))));
+    font-size: var(--fs);
+}
+
+h5, .subtitle-h5 {
+    --fs: calc(var(--fs-inc) * calc(1.2rem + (1.5 - 1.2) * ((100vw - 20rem) / (80 - 20))));
+    font-size: var(--fs);
+}
+
+h6, .subtitle-h6 {
+    --fs: calc(var(--fs-inc) * calc(1rem + (1.3 - 1) * ((100vw - 20rem) / (80 - 20))));
+    font-size: var(--fs);
+}
+
+.subtitle-h1, .subtitle-h2, .subtitle-h3, .subtitle-h4, .subtitle-h5, .subtitle-h6 {
+    font-weight: 700;
+    line-height: 1.25;
+}
+
+.intro, .intro-italic, .intro-bold, .intro-bold-italic, .intro-lighten {
+    font-size: calc(var(--fs) * 1.15);
+    line-height: 1.3;
+}
+
+.intro-italic {
+    font-style: italic;
+}
+
+.intro-bold {
+    font-weight: 700;
+}
+
+.intro-bold-italic {
+    font-weight: 700;
+    font-style: italic;
+}
+
+.intro-lighten {
+    opacity: .7;
+}

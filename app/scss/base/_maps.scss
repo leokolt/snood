@@ -1,0 +1,87 @@
+/* scales */
+$scales: (
+    xxxxs: 0.402,
+    xxxs: 0.482,
+    xxs: 0.578,
+    xs: 0.694,
+    sm: 0.833,
+    base: 1,
+    md: 1.2,
+    lg: 1.44,
+    xl: 1.728,
+    xxl: 2.074,
+    xxxl: 2.488,
+    xxxxl: 2.986
+);
+
+/* spaces */
+
+$spaces: (
+    xxxxs: 0.125rem,
+    xxxs:  0.25rem,
+    xxs:   0.375rem,
+    xs:    0.5rem,
+    sm:    0.75rem,
+    base:  1rem,
+    md:    1.25rem,
+    lg:    2rem,
+    xl:    3.25rem,
+    xxl:   5.25rem,
+    xxxl:  8.5rem,
+    xxxxl: 13.75rem
+);
+
+
+
+
+/*media quaries breakpoints */
+
+$breakpoints: (
+
+    // Small tablets and large smartphones (landscape view)
+    sm: 32rem,
+
+    // Small tablets (portrait view)
+    md: 48rem,
+
+    // Tablets and small desktops
+    lg: 64rem,
+
+    // Large tablets and desktops
+    xl: 80rem,
+
+    //desktops
+    xxl: 90rem
+
+);
+
+/* widths for max-width wrapper */
+
+$max-widths: (
+    default: 70rem,
+    md: 75rem,
+    full: 100%,
+    lg: 80rem,
+    sm: 65rem,
+    xs: 60rem
+);
+
+/* auto width with align center*/
+
+$view-widths: (
+    default: 55ch,
+    md: 60ch,
+    full: 100%,
+    lg: 65ch,
+    sm: 50ch,
+    xs: 45ch
+);
+
+
+/* global variables */
+
+//units for types
+$units: rem;
+
+//default numbers of columns in grids
+$grid-cols: 12;

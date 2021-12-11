@@ -1,0 +1,335 @@
+// @use 'variables';
+// @use 'breakpoints' as *;
+// @use 'scales';
+@use 'maps' as *;
+@use 'variables' as *;
+
+%margin-padding {
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: var(--space);
+    padding-right: var(--space);
+}
+
+/* widths for max-width wrapper */
+
+@each $key, $value in $max-widths {
+
+    @if $key == default {
+        .wrapper {
+            max-width: $value;
+            @extend %margin-padding;
+        }
+    }
+
+    .wrapper-#{$key} {
+        @extend %margin-padding;
+        max-width: $value;
+    }
+
+}
+
+/* auto width for content with align center*/
+
+@each $key, $value in $view-widths {
+
+    @if $key == default {
+        .view {
+            max-width: $value;
+            @extend %margin-padding;
+        }
+    }
+
+    .view-#{$key} {
+        @extend %margin-padding;
+        max-width: $value;
+    }
+
+}
+
+/* fit - auto-rewritable columns */
+
+@mixin width($width) {
+    .wrapper-#{$width} {
+        @content;
+    }
+
+    @if $width == default {
+        .wrapper {
+            @content;
+        }
+    }
+
+}
+
+@each $width, $value in $max-widths {
+    @include width(#{$width}) {
+        @for $i from 1 through length($max-widths) {
+
+            @if $i == 1 {
+                .fit {
+                    display: grid;
+                    grid-template-columns: repeat(auto-fit, minmax(min(100%, calc($value / 1)), 1fr));
+                }
+            }
+
+            .fit-#{$i} {
+                display: grid;
+                grid-template-columns: repeat(auto-fit, minmax(min(100%, calc($value / $i)), 1fr));
+            }
+
+        }
+    }
+}
+
+/*resize 3 cols in 2 cols in 1 cols*/
+
+@for $i from 2 through 6 {
+
+    $a: calc(100% / $i);
+    $b: calc(ceil($a * 1000) / 1000 );
+
+    @if $i == 2 {
+        $b: 50%;
+    }
+
+    .clamp-#{$i} {
+        display: grid;
+        --gap: 1rem;
+        grid-template-columns: repeat(auto-fit, minmax(clamp($b - var(--gap), 200px, 100%), 1fr));
+    }
+
+}
+
+/*resize 3 cols in 1 cols */
+
+.wedge {
+    display: grid;
+    --gap: 1rem;
+    grid-template-columns: repeat(auto-fit, minmax(clamp(33.3333% - var(--gap), (40rem - 100%) * 999, 100%), 1fr));
+}
+
+/* margin blocks into container */
+
+@each $key, $value in $spaces {
+
+    @if $key == base {
+        .flow-y > * + * {
+            margin-top: $value;
+        }
+
+        .flow-x > * + * {
+            margin-top: $value;
+        }
+    }
+
+    .flow-y-#{$key} > * + * {
+        margin-top: $value
+    }
+
+    .flow-x-#{$key} > * + * {
+        margin-top: $value
+    }
+
+}
+
+/* block wide width outside wrapper */
+
+.wide-width {
+    position: relative;
+    width: 85vw;
+    min-width: 100%;
+    margin: auto calc(50% - 50vw);
+    transform: translateX(calc(50vw - 50%));
+}
+
+/* block full width outside wrapper */
+
+.full-width {
+    position: relative;
+    width: 100vw;
+    left: 50%;
+    right: 50%;
+    margin-left: -50vw;
+    margin-right: -50vw;
+}
+
+
+
+
+/* cover with position absolute */
+.cover-wrap {
+    position: relative;
+
+    .cover {
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+    }
+}
+
+/* image in wrap */
+
+.image-wrap {
+    position: relative;
+    padding-top: 100%;
+
+    .image {
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        top: 0;
+        -o-object-fit: cover;
+        object-fit: cover;
+    }
+}
+
+/*reset*/
+
+.reset {
+    background-color: transparent;
+    padding: 0;
+    border: 0;
+    border-radius: 0;
+    color: inherit;
+    line-height: inherit;
+    appearance: none;
+}
+
+/* highlight text */
+
+.highlight {
+    display: inline-block;
+    padding: 2px 6px;
+    border-radius: 6px;
+}
+
+
+/* animation */
+
+/* mixins for animation */
+
+@mixin keyframes($animation-name) {
+    @keyframes #{$animation-name} {
+      @content;
+    }
+}
+
+@mixin animation($str) {
+    animation: #{$str};
+}
+
+/* fade-in */
+
+@include keyframes(fade-in) {
+    0% { opacity: 0; }
+    100% { opacity: 1; }
+}
+
+.fade-in {
+    @include animation('1s ease-in-out fade-in');
+
+    .fast {
+        @include animation('0.3s ease-in-out fade-in');
+    }
+}
+
+/* fade up */
+
+@include keyframes(fade-up) {
+    0% { opacity: 0.8; transform: translateY(100%); }
+    100% { opacity: 1; transform: translateY(0); }
+}
+
+.fade-up {
+    opacity: 0;
+    @include animation('0.3s ease-out forwards fade-up');
+}
+
+/*fade down*/
+
+@include keyframes(fade-down) {
+    0% { opacity: 0.8; transform: translateY(-100%); }
+    100% { opacity: 1; transform: translateY(0); }
+}
+
+.fade-down {
+    opacity: 0;
+    @include animation('0.3s ease-out forwards fade-down');
+}
+
+/*grow-x*/
+
+@include keyframes(grow-x) {
+    to { width: 100%; }
+}
+
+.grow-x {
+    width: 0%;
+    @include animation('0.3s ease 0.5s forwards grow-x');
+}
+
+/*shrink-x*/
+
+@include keyframes(shrink-x) {
+    to { width: 0%; }
+}
+
+.shrink-x {
+    @include animation('0.3s ease-in-out 0.5s forwards shrink-x');
+}
+
+
+/*scale in*/
+
+@include keyframes(scale-in) {
+    0% { opacity: 0;transform: scale(0.5); }
+    100% { opacity: 1;transform: scale(1); }
+}
+
+.scale-in {
+    @include animation('0.3s cubic-bezier(0.2, 0, 0.13, 1.5) scale-in');
+}
+
+
+
+/*pulse*/
+
+@include keyframes(pulse) {
+    0% { opacity: 0;transform: scale(0.5); }
+    100% { opacity: 1;transform: scale(1); }
+}
+
+.pulse {
+    @include animation('2s linear infinite pulse');
+}
+
+/*pulse in*/
+
+/* @keyframes duration | timing-function | delay | iteration-count | direction | fill-mode | play-state | name */
+
+@include keyframes(pulse-in) {
+    0% { transform: scale3d(1, 1, 1); }
+    50% { transform: scale3d(1.1, 1.1, 1.1); }
+    100% { transform: scale3d(1, 1, 1); }
+}
+
+.pulse-in {
+    @include animation('0.5s pulse-in');
+}
+
+/*rotate*/
+
+/* @keyframes duration | timing-function | delay | iteration-count | direction | fill-mode | play-state | name */
+
+@include keyframes(rotate) {
+    100% { transform: rotate(360deg); }
+}
+
+.rotate {
+    @include animation('1s linear infinite rotate');
+}

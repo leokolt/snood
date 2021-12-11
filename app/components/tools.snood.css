@@ -1,0 +1,344 @@
+/* Level 1. Tools */
+
+/* auto width with align center*/
+.view {
+    max-width: calc(36 * var(--fs));
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* margin blocks into container */
+.flow > * + * {
+    margin-top: calc(var(--scale) * var(--fs));
+}
+
+.flow-2 > * + * {
+    margin-top: calc(var(--scale) * calc(var(--fs) * 2));
+}
+
+.flow-3 > * + * {
+    margin-top: calc(var(--scale) * calc(var(--fs) * 3));
+}
+
+
+.flow-inline > * + * {
+    margin-left: calc(var(--scale) * var(--fs));
+}
+
+.flow-inline-2 > * + * {
+    margin-left: calc(var(--scale) * calc(var(--fs) * 2));
+}
+
+.flow-inline-3 > * + * {
+    margin-left: calc(var(--scale) * calc(var(--fs) * 3));
+}
+
+
+/*wrapper for inner block*/
+.wrapper {
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: var(--fs);
+    padding-right: var(--fs);
+    max-width: 70rem;
+}
+
+.wrapper-md {
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: var(--fs);
+    padding-right: var(--fs);
+    max-width: 75rem;
+}
+
+.wrapper-full {
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: var(--fs);
+    padding-right: var(--fs);
+    max-width: 100%;
+}
+
+.wrapper-lg {
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: var(--fs);
+    padding-right: var(--fs);
+    max-width: 80rem;
+}
+
+.wrapper-sm {
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: var(--fs);
+    padding-right: var(--fs);
+    max-width: 65rem;
+}
+
+.wrapper-xs {
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: var(--fs);
+    padding-right: var(--fs);
+    max-width: 60rem;
+}
+
+
+/*fit*/
+.fit, .fit-default, .fit-3 {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 333.33px), 1fr));
+}
+
+.wrapper .fit {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 333.33px), 1fr));
+}
+
+.fit-full {
+    display: grid;
+    grid-template-columns: 1fr;
+}
+
+.fit-2 {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 500px), 1fr));
+}
+
+.fit-4 {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 250px), 1fr));
+}
+
+.fit-5 {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 200px), 1fr));
+}
+
+.fit-6 {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 166.66px), 1fr));
+}
+
+/*resize 3 cols in 1 cols */
+.albatros {
+    --gap: 1rem;
+    grid-template-columns: repeat(auto-fit, minmax(clamp(33.3333% - var(--gap), (40rem - 100%) * 999, 100%), 1fr));
+}
+
+
+/*resize 3 cols in 2 cols in 1 cols*/
+.clamp {
+    --gap: 1rem;
+    grid-template-columns: repeat(auto-fit, minmax(clamp(50% - var(--gap), 200px, 100%), 1fr));
+}
+
+/* cover with position absolute */
+.cover-wrap .cover {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.cover-wrap {
+    position: relative;
+}
+
+/* image in wrap */
+.image-wrap {
+    position: relative;
+    padding-top: 100%;
+}
+
+.image-wrap .image {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    -o-object-fit: cover;
+    object-fit: cover;
+}
+
+/*reset*/
+.reset {
+    background-color: transparent;
+    padding: 0;
+    border: 0;
+    border-radius: 0;
+    color: inherit;
+    line-height: inherit;
+    appearance: none;
+}
+
+.highlight {
+    display: inline-block;
+    padding: 2px 6px;
+    border-radius: 6px;
+}
+
+/* animation */
+/*fade-in*/
+.fade-in {
+    animation-name: fade-in;
+    animation-duration: 1s;
+    animation-timing-function: ease-in-out;
+}
+
+.fade-in.fast {
+    animation-duration: 300ms;
+}
+
+@keyframes fade-in {
+    0% {
+      opacity: 0;
+    }
+
+    100% {
+      opacity: 1;
+    }
+}
+
+/*fade up*/
+.fade-up {
+    opacity: 0;
+    animation-name: fade-up;
+    animation-duration: 0.3s;
+    animation-fill-mode: forwards;
+    animation-timing-function: ease-out;
+    animation-delay: 1s;
+}
+
+@keyframes fade-up {
+    0% {
+      opacity: 0.8;
+      transform: translateY(100%);
+    }
+
+    100% {
+      opacity: 1;
+      transform: translateY(0);
+    }
+}
+
+/*fade down*/
+.fade-down {
+    animation-name: fade-down;
+    animation-duration: 0.3s;
+    animation-fill-mode: forwards;
+    animation-timing-function: ease-in;
+}
+
+@keyframes fade-down {
+    0% {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    100% {
+      opacity: 0.5;
+      transform: translateY(100%);
+    }
+}
+
+/*grow-x*/
+.grow-x {
+    width: 0%;
+    animation-name: grow-x;
+    animation-duration: 0.3s;
+    animation-fill-mode: forwards;
+    animation-timing-function: ease;
+    animation-delay: 0.5s;
+}
+
+@keyframes grow-x {
+    to { width: 100%; }
+}
+
+/*shrink-x*/
+.shrink-x {
+    animation-name: shrink-x;
+    animation-duration: 0.3s;
+    animation-fill-mode: forwards;
+    animation-timing-function: ease-in-out;
+    animation-delay: 0.5s;
+}
+
+@keyframes shrink-x {
+    to { width: 0%; }
+}
+
+/*scale in*/
+.scale-in {
+    animation-name: scale-in;
+    animation-duration: 0.15s;
+    animation-timing-function: cubic-bezier(0.2, 0, 0.13, 1.5);
+}
+
+@keyframes scale-in {
+    0% {
+      opacity: 0;
+      transform: scale(0.5);
+    }
+
+    100% {
+      opacity: 1;
+      transform: scale(1);
+    }
+}
+
+/*pulse*/
+.pulse {
+    animation-name: pulse;
+    animation-duration: 2s;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+}
+
+@keyframes pulse {
+    0% {
+      opacity: 0.3;
+    }
+
+    10% {
+      opacity: 1;
+    }
+
+    100% {
+      opacity: 0.3;
+    }
+}
+
+/*pulse in*/
+.pulse-in {
+    animation-name: pulse-in;
+    animation-duration: 0.5s;
+}
+
+@keyframes pulse-in {
+    0% {
+      transform: scale3d(1, 1, 1);
+    }
+
+    50% {
+      transform: scale3d(1.1, 1.1, 1.1);
+    }
+
+    100% {
+      transform: scale3d(1, 1, 1);
+    }
+}
+
+/*rotate*/
+.rotate {
+    animation: rotate-keyframes 1s linear infinite;
+}
+
+ @keyframes rotate-keyframes {
+    100% {
+      transform: rotate(360deg);
+    }
+}

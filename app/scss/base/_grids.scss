@@ -1,0 +1,90 @@
+@use 'maps' as *;
+@use 'breakpoints' as *;
+
+/*grids */
+
+/*deafult style all grids*/
+
+%grids, .grid {
+    display: grid;
+    grid-auto-columns: 1fr;
+}
+
+
+/*default grid on mobile screen and more */
+
+.grid, .grid\@xs {
+    grid-template-columns: repeat(1, [col-start] 1fr);
+    @extend %grids;
+}
+
+@for $i from 1 through $grid-cols {
+
+    .grid-#{$i},  .grid-#{$i}\@xs {
+        @extend %grids;
+        grid-template-columns: repeat($i, [col-start] 1fr);
+    }
+
+    .col-#{$i}, .col-#{$i}\@xs {
+        grid-column-end: span $i;
+    }
+
+    .row-#{$i}, .row-#{$i}\@xs  {
+        grid-row-end: span $i;
+    }
+
+    .col-start-#{$i}, .col-start-#{$i}\@xs {
+        grid-column-start: col-start $i;
+    }
+
+    .row-start-#{$i}, .row-start-#{$i}\@xs {
+        grid-row-start: row-start $i;
+    }
+
+}
+
+/* helpers of grids */
+
+.dense {
+    grid-auto-flow: dense;
+}
+
+.col-dense {
+    grid-auto-columns: dense;
+}
+
+.row-dense {
+    grid-auto-rows: dense;
+}
+
+/*breakpoints grid*/
+
+@each $breakpoint, $value in $breakpoints {
+    @include breakpoint(#{$breakpoint}) {
+        @for $i from 1 through $grid-cols {
+
+            .grid-#{$i}\@#{$breakpoint} {
+                display: grid;
+                grid-auto-columns: 1fr;
+                grid-template-columns: repeat($i, [col-start] 1fr);
+            }
+
+            .col-#{$i}\@#{$breakpoint} {
+                grid-column-end: span $i;
+            }
+
+            .row-#{$i}\@#{$breakpoint}  {
+                grid-row-end: span $i;
+            }
+
+            .col-start-#{$i}\@#{$breakpoint} {
+                grid-column-start: col-start $i;
+            }
+
+            .row-start-#{$i}\@#{$breakpoint} {
+                grid-row-start: row-start $i;
+            }
+
+        }
+    }
+}
