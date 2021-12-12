@@ -1,6 +1,5 @@
 // @use 'variables';
 // @use 'breakpoints' as *;
-// @use 'scales';
 @use 'maps' as *;
 @use 'variables' as *;
 
@@ -95,8 +94,9 @@
 
     .clamp-#{$i} {
         display: grid;
-        --gap: 1rem;
-        grid-template-columns: repeat(auto-fit, minmax(clamp($b - var(--gap), 200px, 100%), 1fr));
+        $grid-gap: #{$clamp-gap} + $units;
+        grid-gap: $grid-gap;
+        grid-template-columns: repeat(auto-fit, minmax(clamp($b - $grid-gap, 200px, 100%), 1fr));
     }
 
 }
@@ -105,13 +105,14 @@
 
 .wedge {
     display: grid;
-    --gap: 1rem;
-    grid-template-columns: repeat(auto-fit, minmax(clamp(33.3333% - var(--gap), (40rem - 100%) * 999, 100%), 1fr));
+    $grid-gap: #{$wedge-gap} + $units;
+    grid-gap: $grid-gap;
+    grid-template-columns: repeat(auto-fit, minmax(clamp(33.3333% - $grid-gap, (40rem - 100%) * 999, 100%), 1fr));
 }
 
 /* margin blocks into container */
 
-@each $key, $value in $spaces {
+@each $key, $value in $gutters {
 
     @if $key == base {
         .flow-y > * + * {
@@ -119,7 +120,7 @@
         }
 
         .flow-x > * + * {
-            margin-top: $value;
+            margin-left: $value;
         }
     }
 
@@ -128,7 +129,7 @@
     }
 
     .flow-x-#{$key} > * + * {
-        margin-top: $value
+        margin-left: $value
     }
 
 }
@@ -211,6 +212,9 @@
 
 /* animation */
 
+/* use the following sequence of values for the animation property -
+duration | timing-function | delay | iteration-count | direction | fill-mode | play-state | name */
+
 /* mixins for animation */
 
 @mixin keyframes($animation-name) {
@@ -283,7 +287,6 @@
     @include animation('0.3s ease-in-out 0.5s forwards shrink-x');
 }
 
-
 /*scale in*/
 
 @include keyframes(scale-in) {
@@ -294,8 +297,6 @@
 .scale-in {
     @include animation('0.3s cubic-bezier(0.2, 0, 0.13, 1.5) scale-in');
 }
-
-
 
 /*pulse*/
 
@@ -310,8 +311,6 @@
 
 /*pulse in*/
 
-/* @keyframes duration | timing-function | delay | iteration-count | direction | fill-mode | play-state | name */
-
 @include keyframes(pulse-in) {
     0% { transform: scale3d(1, 1, 1); }
     50% { transform: scale3d(1.1, 1.1, 1.1); }
@@ -323,8 +322,6 @@
 }
 
 /*rotate*/
-
-/* @keyframes duration | timing-function | delay | iteration-count | direction | fill-mode | play-state | name */
 
 @include keyframes(rotate) {
     100% { transform: rotate(360deg); }

@@ -6,8 +6,8 @@
         --scale-#{$key}: #{$value};
     }
 
-    /* spaces */
-    @each $key, $value in $spaces {
+    /* gutters */
+    @each $key, $value in $gutters {
         --space-#{$key}: #{$value};
     }
 

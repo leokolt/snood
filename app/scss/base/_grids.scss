@@ -10,34 +10,33 @@
     grid-auto-columns: 1fr;
 }
 
-
 /*default grid on mobile screen and more */
 
-.grid, .grid\@xs {
+.grid, .grid {
     grid-template-columns: repeat(1, [col-start] 1fr);
     @extend %grids;
 }
 
 @for $i from 1 through $grid-cols {
 
-    .grid-#{$i},  .grid-#{$i}\@xs {
+    .grid-#{$i} {
         @extend %grids;
         grid-template-columns: repeat($i, [col-start] 1fr);
     }
 
-    .col-#{$i}, .col-#{$i}\@xs {
+    .col-#{$i} {
         grid-column-end: span $i;
     }
 
-    .row-#{$i}, .row-#{$i}\@xs  {
+    .row-#{$i}  {
         grid-row-end: span $i;
     }
 
-    .col-start-#{$i}, .col-start-#{$i}\@xs {
+    .col-start-#{$i} {
         grid-column-start: col-start $i;
     }
 
-    .row-start-#{$i}, .row-start-#{$i}\@xs {
+    .row-start-#{$i} {
         grid-row-start: row-start $i;
     }
 

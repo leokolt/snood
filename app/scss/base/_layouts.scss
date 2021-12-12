@@ -1,0 +1,232 @@
+@use 'maps' as *;
+@use 'breakpoints' as *;
+
+/* Fence. For header, main, 2 aside & footer */
+
+.fence {
+    display: grid;
+    grid-template-columns: 2fr;
+    grid-template-areas:
+        'header header'
+        'main main'
+        'side-left side-left'
+        'side side'
+        'footer footer';
+
+    header {
+        grid-area: header;
+    }
+
+    main {
+        grid-area: main;
+    }
+
+    > *:not(main, script, style, header, footer):nth-child(1) {
+        grid-area: side-left;
+    }
+
+     > *:not(main, script, style, header, footer):nth-child(2) {
+        grid-area: side;
+    }
+
+     footer {
+        grid-area: footer;
+    }
+
+}
+
+/*picket. for header, main, 2 multi - dimensional asides & footer*/
+
+.picket {
+    grid-template-columns: 2fr;
+    grid-template-areas:
+        'header header'
+        'main main'
+        'side-left side-left'
+        'side side'
+        'footer footer';
+
+    header {
+        grid-area: header;
+    }
+
+    main {
+        grid-area: main;
+    }
+
+    > *:not(main, script, style, header, footer):nth-child(1) {
+        grid-area: side-left;
+    }
+
+    > *:not(main, script, style, header, footer):nth-child(2) {
+        grid-area: side;
+    }
+
+    footer {
+        grid-area: footer;
+    }
+
+}
+
+/*Flat. For header, main & footer */
+
+.flat {
+    display: grid;
+    grid-template-columns: 2fr;
+    grid-template-areas:
+            'header header'
+            'main main'
+            'footer footer';
+
+    header {
+        grid-area: header;
+    }
+
+    main {
+        grid-area: main;
+    }
+
+    footer {
+        grid-area: footer;
+    }
+
+}
+
+/*Nearby. For header, main, aside & footer */
+
+.nearby {
+    grid-template-columns: 2fr;
+    grid-template-areas:
+        'header header'
+        'main main'
+        'side side'
+        'footer footer';
+
+    header {
+        grid-area: header;
+    }
+
+    main {
+        grid-area: main;
+    }
+
+    > main + *:not(main, script, style, header, footer)  {
+        grid-area: side;
+    }
+
+    footer {
+        grid-area: footer;
+    }
+
+}
+
+/*free*/
+
+.free {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-areas:
+            'top-header top-header top-header top-header'
+            'header header header header'
+            'bottom-header bottom-header bottom-header bottom-header'
+            'top-main top-main top-main top-main'
+            'main main main main'
+            'bottom-main bottom-main bottom-main bottom-main'
+            'top-footer top-footer top-footer top-footer '
+            'footer footer footer footer'
+            'bottom-footer bottom-footer bottom-footer bottom-footer';
+
+    header {
+        grid-area: header;
+    }
+
+    .top-header {
+        grid-area: top-header;
+    }
+
+    .bottom-header {
+        grid-area: bottom-header;
+    }
+
+    main {
+        grid-area: main;
+    }
+
+    .top-main {
+        grid-area: top-main;
+    }
+
+    .bottom-main {
+        grid-area: bottom-main;
+    }
+
+    .top-footer {
+        grid-area: top-footer;
+    }
+
+    .bottom-footer {
+        grid-area: bottom-footer;
+    }
+
+    footer {
+        grid-area: footer;
+    }
+
+}
+
+
+@each $breakpoint, $value in $breakpoints {
+    @include breakpoint(md) {
+        .fence  {
+            grid-template-columns: repeat(3, 1fr);
+            grid-template-areas:
+                'header header header'
+                'side-left main main'
+                'side-left main main'
+                'side side side'
+                'footer footer footer';
+        }
+
+        .picket {
+            grid-template-columns: repeat(3, 1fr);
+            grid-template-areas:
+                'header header header'
+                'side-left main main'
+                'side-left main main'
+                'side side side'
+                'footer footer footer';
+        }
+
+        .nearby {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            grid-template-areas:
+                'header header header header'
+                'main main main side'
+                'main main main side'
+                'footer footer footer footer';
+        }
+    }
+
+    @include breakpoint(lg) {
+        .fence {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            grid-template-areas:
+                'header header header header header'
+                'side-left main main main side'
+                'side-left main main main side'
+                'footer footer footer footer footer';
+        }
+
+        .picket {
+            display: grid;
+            grid-template-columns: repeat(6, 1fr);
+            grid-template-areas:
+                'header header header header header header'
+                'side-left main main main side side'
+                'side-left main main main side side'
+                'footer footer footer footer footer footer';
+        }
+    }
+}

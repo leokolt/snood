@@ -14,9 +14,10 @@ $scales: (
     xxxxl: 2.986
 );
 
-/* spaces */
+/* gutters */
 
-$spaces: (
+$gutters: (
+    n: 0,
     xxxxs: 0.125rem,
     xxxs:  0.25rem,
     xxs:   0.375rem,
@@ -28,11 +29,8 @@ $spaces: (
     xl:    3.25rem,
     xxl:   5.25rem,
     xxxl:  8.5rem,
-    xxxxl: 13.75rem
+    xxxxl: 13.75rem,
 );
-
-
-
 
 /*media quaries breakpoints */
 
@@ -78,6 +76,40 @@ $view-widths: (
 );
 
 
+/* measures */
+
+$measures: (
+    default: 100%,
+    xxl: 90%,
+    xl: 80%,
+    lg: 70%,
+    md: 50%,
+    sm: 40%,
+    xs: 30%,
+    xxs: 20%
+);
+
+$radius: (
+    n: 0,
+    xs: .125,
+    sm: .25,
+    md: .5,
+    lg: 1,
+    xl: 2,
+    full: 100,
+    pill: 100
+);
+
+$borders: (
+    default: 1px,
+    n: 0,
+    xs: .125,
+    sm: .25,
+    md: .5,
+    lg: 1,
+    xl: 2
+);
+
 /* global variables */
 
 //units for types
@@ -85,3 +117,9 @@ $units: rem;
 
 //default numbers of columns in grids
 $grid-cols: 12;
+
+//gap for clamp tool
+$clamp-gap: 1;
+
+//gap for wedge tool
+$wedge-gap: 1;

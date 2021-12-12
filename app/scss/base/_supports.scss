@@ -1,0 +1,852 @@
+@use 'maps' as *;
+@use 'breakpoints' as *;
+
+/* gutters */
+
+@each $key, $value in $gutters {
+
+    @if $key == base {
+
+        /* gap for grids & layouts */
+
+        .gap {
+            grid-gap: $value;
+        }
+
+        .gap-y {
+            grid-row-gap: $value;
+        }
+
+        .gap-x  {
+            grid-column-gap: $value;
+        }
+
+        /* paddings */
+
+        .p {
+            padding: $value;
+        }
+
+        .p-y {
+            padding-top: $value;
+            padding-bottom: $value;
+        }
+
+        .p-x {
+            padding-left: $value;
+            padding-right: $value;
+        }
+
+        .p-t {
+            padding-top: $value;
+        }
+
+        .p-b {
+            padding-bottom: $value;
+        }
+
+        .p-l {
+            padding-left: $value;
+        }
+
+        .p-r {
+            padding-right: $value;
+        }
+
+        /* margins */
+
+        .m {
+            margin: $value;
+        }
+
+        .m-y {
+            margin-top: $value;
+            margin-bottom: $value;
+        }
+
+        .m-x {
+            margin-left: $value;
+            margin-right: $value;
+        }
+
+        .m-t {
+            margin-top: $value;
+        }
+
+        .m-b {
+            margin-bottom: $value;
+        }
+
+        .m-l {
+            margin-left: $value;
+        }
+
+        .m-r {
+            margin-right: $value;
+        }
+
+    }
+
+    /* gaps */
+
+    .gap-#{$key} {
+        grid-gap: $value;
+    }
+
+    .gap-y-#{$key} {
+        grid-row-gap: $value;
+    }
+
+    .gap-x-#{$key} {
+        grid-column-gap: $value;
+    }
+
+    /* paddings */
+
+    .p-#{$key} {
+        padding: $value;
+    }
+
+    .p-y-#{$key} {
+        padding-top: $value;
+        padding-bottom: $value;
+    }
+
+    .p-x-#{$key} {
+        padding-left: $value;
+        padding-right: $value;
+    }
+
+    .p-t-#{$key} {
+        padding-top: $value;
+    }
+
+    .p-b-#{$key} {
+        padding-bottom: $value;
+    }
+
+    .p-l-#{$key} {
+        padding-left: $value;
+    }
+
+    .p-r-#{$key} {
+        padding-right: $value;
+    }
+
+    /* margins */
+
+    .m-#{$key} {
+        margin: $value;
+    }
+
+    .m-y-#{$key} {
+        margin-top: $value;
+        margin-bottom: $value;
+    }
+
+    .m-x-#{$key} {
+        margin-left: $value;
+        margin-right: $value;
+    }
+
+    .m-t-#{$key} {
+        margin-top: $value;
+    }
+
+    .m-b-#{$key} {
+        margin-bottom: $value;
+    }
+
+    .m-l-#{$key} {
+        margin-left: $value;
+    }
+
+    .m-r-#{$key} {
+        margin-right: $value;
+    }
+
+}
+
+@each $breakpoint, $value in $breakpoints {
+    @include breakpoint(#{$breakpoint}) {
+        @each $key, $value in $gutters {
+
+            @if $key == base {
+
+                /* gap for grids & layouts */
+
+                .gap\@#{$breakpoint} {
+                    grid-gap: $value;
+                }
+
+                .gap-y\@#{$breakpoint} {
+                    grid-row-gap: $value;
+                }
+
+                .gap-x\@#{$breakpoint}  {
+                    grid-column-gap: $value;
+                }
+
+                /* paddings */
+
+                .p\@#{$breakpoint} {
+                    padding: $value;
+                }
+
+                .p-y\@#{$breakpoint} {
+                    padding-top: $value;
+                    padding-bottom: $value;
+                }
+
+                .p-x\@#{$breakpoint} {
+                    padding-left: $value;
+                    padding-right: $value;
+                }
+
+                .p-t\@#{$breakpoint} {
+                    padding-top: $value;
+                }
+
+                .p-b\@#{$breakpoint} {
+                    padding-bottom: $value;
+                }
+
+                .p-l\@#{$breakpoint} {
+                    padding-left: $value;
+                }
+
+                .p-r\@#{$breakpoint} {
+                    padding-right: $value;
+                }
+
+                /* margins */
+
+                .m\@#{$breakpoint} {
+                    margin: $value;
+                }
+
+                .m-y\@#{$breakpoint} {
+                    margin-top: $value;
+                    margin-bottom: $value;
+                }
+
+                .m-x\@#{$breakpoint} {
+                    margin-left: $value;
+                    margin-right: $value;
+                }
+
+                .m-t\@#{$breakpoint} {
+                    margin-top: $value;
+                }
+
+                .m-b\@#{$breakpoint} {
+                    margin-bottom: $value;
+                }
+
+                .m-l\@#{$breakpoint} {
+                    margin-left: $value;
+                }
+
+                .m-r\@#{$breakpoint} {
+                    margin-right: $value;
+                }
+
+            }
+
+            /* gaps */
+
+            .gap-#{$key}\@#{$breakpoint} {
+                grid-gap: $value;
+            }
+
+            .gap-y-#{$key}\@#{$breakpoint} {
+                grid-row-gap: $value;
+            }
+
+            .gap-x-#{$key}\@#{$breakpoint} {
+                grid-column-gap: $value;
+            }
+
+            /* paddings */
+
+            .p-#{$key}\@#{$breakpoint} {
+                padding: $value;
+            }
+
+            .p-y-#{$key}\@#{$breakpoint} {
+                padding-top: $value;
+                padding-bottom: $value;
+            }
+
+            .p-x-#{$key}\@#{$breakpoint} {
+                padding-left: $value;
+                padding-right: $value;
+            }
+
+            .p-t-#{$key}\@#{$breakpoint} {
+                padding-top: $value;
+            }
+
+            .p-b-#{$key}\@#{$breakpoint} {
+                padding-bottom: $value;
+            }
+
+            .p-l-#{$key}\@#{$breakpoint} {
+                padding-left: $value;
+            }
+
+            .p-r-#{$key}\@#{$breakpoint} {
+                padding-right: $value;
+            }
+
+            /* margins */
+
+            .m-#{$key}\@#{$breakpoint} {
+                margin: $value;
+            }
+
+            .m-y-#{$key}\@#{$breakpoint} {
+                margin-top: $value;
+                margin-bottom: $value;
+            }
+
+            .m-x-#{$key}\@#{$breakpoint} {
+                margin-left: $value;
+                margin-right: $value;
+            }
+
+            .m-t-#{$key}\@#{$breakpoint} {
+                margin-top: $value;
+            }
+
+            .m-b-#{$key}\@#{$breakpoint} {
+                margin-bottom: $value;
+            }
+
+            .m-l-#{$key}\@#{$breakpoint} {
+                margin-left: $value;
+            }
+
+            .m-r-#{$key}\@#{$breakpoint} {
+                margin-right: $value;
+            }
+
+        }
+    }
+}
+
+
+/* flex */
+.flex {
+    display: flex;
+}
+
+.inline-flex {
+    display: inline-flex;
+}
+
+.align-center {
+    align-items: center;
+}
+
+.align-start {
+    align-items: flex-start;
+}
+
+.align-end {
+    align-items: flex-end;
+}
+
+.align-stretch {
+    align-items: stretch;
+}
+
+.justify-center {
+    justify-content: center;
+}
+
+.justify-start {
+    justify-content: flex-start;
+}
+
+.justify-end {
+    justify-content: flex-end;
+}
+
+.justify-between {
+    justify-content: space-between;
+}
+
+.justify-around {
+    justify-content: space-around;
+}
+
+.justify-evenly {
+    justify-content: space-evenly;
+}
+
+.justify-stretch {
+    justify-content: stretch;
+}
+
+.wrap {
+    flex-wrap: wrap;
+}
+
+.nowrap {
+    flex-wrap: nowrap;
+}
+
+.direction-column {
+    flex-direction: column;
+}
+
+.direction-column-reverse {
+    flex-direction: column-reverse;
+}
+
+.direction-row-reverse {
+    flex-direction: row-reverse;
+}
+
+/* display */
+.block {
+    display: block;
+}
+
+.inline {
+    display: inline;
+
+    &-block {
+        display: inline-block;
+    }
+}
+
+/* display & visibility */
+
+.none {
+    display: none;
+}
+
+.hidden {
+    visibility: hidden;
+}
+
+/* text */
+.text-center {
+    text-align: center;
+}
+
+.text-left {
+    text-align: left;
+}
+
+.text-right {
+    text-align: right;
+}
+
+@for $i from 1 through 9 {
+    .font-weight-#{$i} {
+        font-weight: #{$i}00;
+    }
+}
+
+.italic {
+    font-style: italic;
+}
+
+.underline {
+    text-decoration: underline;
+}
+
+.capitalize {
+    text-transform: capitalize;
+}
+
+.uppercase {
+    text-transform: uppercase;
+}
+
+
+/* measures */
+
+@each $key, $value in $measures {
+
+    @if $key == default {
+        .measure {
+            max-width: 100%;
+        }
+    }
+
+    .measure-#{$key} {
+        max-width: $value;
+    }
+
+}
+
+
+/*position*/
+
+.relative {
+    position: relative;
+}
+
+.fixed {
+    position: fixed;
+}
+
+.absolute {
+    position: absolute;
+}
+
+/* opacity */
+
+@for $i from 1 through 9 {
+    .opacity-#{$i} {
+        opacity: calc($i / 10);
+    }
+}
+
+/* object-fit */
+
+.object-fill {
+    object-fit: fill;
+}
+
+.object-contain {
+    object-fit: contain;
+}
+
+.object-cover {
+    object-fit: cover;
+}
+
+.object-none {
+    object-fit: none;
+}
+
+.object-scale {
+    object-fit: scale-down;
+}
+
+/*background-size*/
+.bg-cover {
+    background-size: cover;
+}
+
+.bg-contain {
+    background-size: contain;
+}
+
+/*radius*/
+
+@each $key, $value in $radius {
+
+    @if $key == full {
+
+        .radius-#{$key} {
+            border-radius: $value * 1%;
+        }
+
+    } @else if $key != full {
+
+        .radius-#{$key} {
+            border-radius: $value + $units;
+        }
+
+    }
+
+}
+
+/* border */
+
+.border {
+    border-style: solid;
+
+    &-dotted {
+        border-style: dotted;
+    }
+
+    &-dashed {
+        border-style: dashed;
+    }
+
+    &-none {
+        border-style: none;
+    }
+
+}
+
+@each $key, $value in $borders {
+    .border-#{$key} {
+        border-width: $value + $units;
+    }
+
+    @if $key == default {
+        .border {
+            $units: null;
+            border-width: $value + $units;
+        }
+    }
+}
+
+
+
+@each $breakpoint, $value in $breakpoints {
+    @include breakpoint(#{$breakpoint}) {
+
+        /* flex */
+        .flex\@#{$breakpoint} {
+            display: flex;
+        }
+
+        .inline-flex\@#{$breakpoint} {
+            display: inline-flex;
+        }
+
+        .align-center\@#{$breakpoint} {
+            align-items: center;
+        }
+
+        .align-start\@#{$breakpoint} {
+            align-items: flex-start;
+        }
+
+        .align-end\@#{$breakpoint} {
+            align-items: flex-end;
+        }
+
+        .align-stretch\@#{$breakpoint} {
+            align-items: stretch;
+        }
+
+        .justify-center\@#{$breakpoint} {
+            justify-content: center;
+        }
+
+        .justify-start\@#{$breakpoint} {
+            justify-content: flex-start;
+        }
+
+        .justify-end\@#{$breakpoint} {
+            justify-content: flex-end;
+        }
+
+        .justify-between\@#{$breakpoint} {
+            justify-content: space-between;
+        }
+
+        .justify-around\@#{$breakpoint} {
+            justify-content: space-around;
+        }
+
+        .justify-evenly\@#{$breakpoint} {
+            justify-content: space-evenly;
+        }
+
+        .justify-stretch\@#{$breakpoint} {
+            justify-content: stretch;
+        }
+
+        .wrap\@#{$breakpoint} {
+            flex-wrap: wrap;
+        }
+
+        .nowrap\@#{$breakpoint} {
+            flex-wrap: nowrap;
+        }
+
+        .direction-column\@#{$breakpoint} {
+            flex-direction: column;
+        }
+
+        .direction-column-reverse\@#{$breakpoint} {
+            flex-direction: column-reverse;
+        }
+
+        .direction-row-reverse\@#{$breakpoint} {
+            flex-direction: row-reverse;
+        }
+
+        /* display */
+        .block\@#{$breakpoint} {
+            display: block;
+        }
+
+        .inline\@#{$breakpoint} {
+            display: inline;
+
+            &-block\@#{$breakpoint} {
+                display: inline-block;
+            }
+        }
+
+        /* display & visibility */
+
+        .none\@#{$breakpoint} {
+            display: none;
+        }
+
+        .hidden\@#{$breakpoint} {
+            visibility: hidden;
+        }
+
+        /* text */
+        .text-center\@#{$breakpoint} {
+            text-align: center;
+        }
+
+        .text-left\@#{$breakpoint} {
+            text-align: left;
+        }
+
+        .text-right\@#{$breakpoint} {
+            text-align: right;
+        }
+
+        @for $i from 1 through 9 {
+            .font-weight-#{$i}\@#{$breakpoint} {
+                font-weight: #{$i}00;
+            }
+        }
+
+        .italic\@#{$breakpoint} {
+            font-style: italic;
+        }
+
+        .underline\@#{$breakpoint} {
+            text-decoration: underline;
+        }
+
+        .capitalize\@#{$breakpoint} {
+            text-transform: capitalize;
+        }
+
+        .uppercase\@#{$breakpoint} {
+            text-transform: uppercase;
+        }
+
+
+        /* measures */
+
+        @each $key, $value in $measures {
+
+            @if $key == default {
+                .measure\@#{$breakpoint} {
+                    max-width: 100%;
+                }
+            }
+
+            .measure-#{$key}\@#{$breakpoint} {
+                max-width: $value;
+            }
+
+        }
+
+
+        /*position*/
+
+        .relative\@#{$breakpoint} {
+            position: relative;
+        }
+
+        .fixed\@#{$breakpoint} {
+            position: fixed;
+        }
+
+        .absolute\@#{$breakpoint} {
+            position: absolute;
+        }
+
+        /* opacity */
+
+        @for $i from 1 through 9 {
+            .opacity-#{$i}\@#{$breakpoint} {
+                opacity: calc($i / 10);
+            }
+        }
+
+        /* object-fit */
+
+        .object-fill\@#{$breakpoint} {
+            object-fit: fill;
+        }
+
+        .object-contain\@#{$breakpoint} {
+            object-fit: contain;
+        }
+
+        .object-cover\@#{$breakpoint} {
+            object-fit: cover;
+        }
+
+        .object-none\@#{$breakpoint} {
+            object-fit: none;
+        }
+
+        .object-scale\@#{$breakpoint} {
+            object-fit: scale-down;
+        }
+
+        /*background-size*/
+        .bg-cover\@#{$breakpoint} {
+            background-size: cover;
+        }
+
+        .bg-contain\@#{$breakpoint} {
+            background-size: contain;
+        }
+
+        /*radius*/
+
+        @each $key, $value in $radius {
+
+            @if $key == full {
+
+                .radius-#{$key}\@#{$breakpoint} {
+                    border-radius: $value * 1% ;
+                }
+
+            } @else if $key != full {
+
+                .radius-#{$key}\@#{$breakpoint} {
+                    border-radius: $value + $units;
+                }
+
+            }
+
+        }
+
+        /* border */
+
+        .border\@#{$breakpoint} {
+            border-style: solid;
+
+
+        .border-dotted\@#{$breakpoint} {
+            border-style: dotted;
+        }
+
+        .border-dashed\@#{$breakpoint} {
+            border-style: dashed;
+        }
+
+        .border-none\@#{$breakpoint} {
+            border-style: none;
+        }
+    }
+
+        @each $key, $value in $borders {
+            .border-#{$key}\@#{$breakpoint}  {
+                border-width: $value + $units;
+            }
+
+            @if $key == default {
+                .border\@#{$breakpoint}  {
+                    $units: null;
+                    border-width: $value + $units;
+                }
+            }
+        }
+    }
+}

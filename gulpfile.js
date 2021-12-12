@@ -61,7 +61,7 @@ function startwatch() {
 }
 
 function styles() {
-	return src('app/scss/*.scss')
+	return src(['app/scss/*.scss'])
     .pipe(scss())
     .pipe(sourcemaps.init())
 	.pipe(concat('snood.min.css')) // Конкатенируем в файл snood.min.css
