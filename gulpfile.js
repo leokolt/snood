@@ -25,12 +25,15 @@ const sourcemaps = require('gulp-sourcemaps');
 // Подключаем модуль del
 const del = require('del');
 
+//убираем лишнее в css
+// const purgecss = require('gulp-purgecss');
+
 /************************/
 
 // Определяем логику работы Browsersync
 function browsersync() {
 	browserSync.init({ // Инициализация Browsersync
-		server: { baseDir: 'app/' }, // Указываем папку сервера
+		server: { baseDir: 'src/' }, // Указываем папку сервера
 		notify: false, // Отключаем уведомления
 		online: true // Режим работы: true или false
 	})
@@ -39,46 +42,54 @@ function browsersync() {
 function scripts() {
 	return src([ // Берем файлы из источников
 		//'node_modules/jquery/dist/jquery.min.js', // Пример подключения библиотеки
-		'app/js/app.js', // Пользовательские скрипты, использующие библиотеку, должны быть подключены в конце
+		'src/js/app.js', // Пользовательские скрипты, использующие библиотеку, должны быть подключены в конце
 		])
 	.pipe(concat('app.min.js')) // Конкатенируем в один файл
 	.pipe(uglify()) // Сжимаем JavaScript
-	.pipe(dest('app/js/')) // Выгружаем готовый файл в папку назначения
+	.pipe(dest('src/js/')) // Выгружаем готовый файл в папку назначения
 	.pipe(browserSync.stream()) // Триггерим Browsersync для обновления страницы
 }
 
 function startwatch() {
 
 	// Выбираем все файлы JS в проекте, а затем исключим с суффиксом .min.js
-	watch(['app/**/*.js', '!app/**/*.min.js'], scripts);
+	watch(['src/**/*.js', '!app/**/*.min.js'], scripts);
 
     // Мониторим файлы препроцессора на изменения
-	watch('app/**/scss/**/*', styles);
+	watch('src/**/scss/**/*', styles);
 
     // Мониторим файлы HTML на изменения
-	watch('app/**/*.html').on('change', browserSync.reload);
+	watch('src/**/*.html').on('change', browserSync.reload);
 
 }
 
+/* работа со стилями*/
 function styles() {
-	return src(['app/scss/*.scss'])
+	return src('src/scss/*.scss')
     .pipe(scss())
     .pipe(sourcemaps.init())
 	.pipe(concat('snood.min.css')) // Конкатенируем в файл snood.min.css
 	.pipe(autoprefixer({overrideBrowserslist: ['last 2 versions', '>5%', 'not IE 11']})) // Создадим префиксы с помощью Autoprefixer
 	.pipe(cleancss( { level: { 1: { specialComments: 0 } }/* , format: 'beautify' */ } )) // Минифицируем стили
     .pipe(sourcemaps.write('.'))
-	.pipe(dest('app/css/')) // Выгрузим результат в папку "app/css/"
+	.pipe(dest('src/css/')) // Выгрузим результат в папку "src/css/"
 	.pipe(browserSync.stream()) // Сделаем инъекцию в браузер
 }
 
+/* очистка стилей от неиспользуемого кода*/
+// function purgestyles() {
+// 	return src('src/css/*.css')
+// 	  .pipe(purgecss({content: ['src/**/*.html']}))
+// 	  .pipe(dest('src/css/purge'))
+// }
+
 function buildcopy() {
 	return src([ // Выбираем нужные файлы
-		'app/css/**/*.min.css',
-		'app/js/**/*.min.js',
-		//'app/images/dest/**/*',
-		'app/**/*.html',
-		], { base: 'app' }) // Параметр "base" сохраняет структуру проекта при копировании
+		'src/css/**/*.min.css',
+		'src/js/**/*.min.js',
+		//'src/images/dest/**/*',
+		'src/**/*.html',
+		], { base: 'src' }) // Параметр "base" сохраняет структуру проекта при копировании
 	.pipe(dest('dist')) // Выгружаем в папку с финальной сборкой
 }
 

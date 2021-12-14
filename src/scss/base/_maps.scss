@@ -14,9 +14,9 @@ $scales: (
     xxxxl: 2.986
 );
 
-/* gutters */
+/* spaces */
 
-$gutters: (
+$spaces: (
     n: 0,
     xxxxs: 0.125rem,
     xxxs:  0.25rem,
@@ -109,6 +109,60 @@ $borders: (
     lg: 1,
     xl: 2
 );
+
+$colors: (
+    white: #ffffff,
+    black: #000000,
+    near-black: #111111,
+    dark-gray: #333333,
+    gray: #777777,
+    light-gray: #eeeeee,
+    mid-gray: #555555,
+    moon-gray: #cccccc,
+    silver: #999999,
+    light-silver: #aaaaaa,
+    dark-red: #e7040f,
+    red: #ff4136,
+    light-red: #ff725c,
+    orange: #ff6300,
+    gold: #ffb700,
+    yellow: #FFFF00,
+    light-yellow: #fbf1a9,
+    dark-yellow: #ffde37,
+    purple: #5e2ca5,
+    light-purple: #a463f2,
+    dark-pink: #d5008f,
+    hot-pink: #ff41b4,
+    pink: #ff80cc,
+    light-pink: #ffa3d7,
+    dark-green: #137752,
+    green: #19a974,
+    light-green: #9eebcf,
+    navy: #001b44,
+    dark-blue: #00449e,
+    blue: #357edd,
+    light-blue: #96ccff,
+    lightest-blue: #cdecff,
+    washed-blue: #f6fffe,
+    washed-green: #e8fdf5,
+    washed-yellow: #fffceb,
+    washed-red: #ffdfdf,
+    transparent: transparent
+);
+
+
+/* global lists */
+
+/* border-positions */
+$border-positions: border, border-top, border-bottom, border-left, border-right;
+
+/* border-styles */
+$border-styles: solid, dashed, dotted, double, ridge, none;
+
+/* radius-positions */
+$radius-positions: all, top-left, top-right, bottom-right, bottom-left;
+
+//border-top-left-radius border-top-right-radius border-bottom-right-radius border-bottom-left-radius
 
 /* global variables */
 

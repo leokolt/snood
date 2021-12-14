@@ -1,0 +1,19 @@
+@use 'maps' as *;
+
+:root {
+    /* scales */
+    @each $key, $value in $scales {
+        --scale-#{$key}: #{$value};
+    }
+
+    /* spaces */
+    @each $key, $value in $spaces {
+        --space-#{$key}: #{$value};
+    }
+
+    /* colors */
+    @each $key, $value in $colors {
+        --#{"" + $key}: #{$value};
+    }
+
+}

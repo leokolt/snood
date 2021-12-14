@@ -112,7 +112,7 @@
 
 /* margin blocks into container */
 
-@each $key, $value in $gutters {
+@each $key, $value in $spaces {
 
     @if $key == base {
         .flow-y > * + * {
