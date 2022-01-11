@@ -1,2 +1,3 @@
-# snood
-Snood.css - lightweight CSS Framework built on Grid Layout
+# Snood CSS
+Snood - lightweight CSS Framework built on Grid Layout and other modern css goodies
+
